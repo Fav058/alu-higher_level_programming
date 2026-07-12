@@ -41,6 +41,4 @@ class Square:
 
     def area(self):
         """Return the current area of the square."""
-#!/bin/bash
-echo "/"
         return self.__size * self.__size
