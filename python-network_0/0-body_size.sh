@@ -1,2 +1,4 @@
 #!/bin/bash
-curl -s -o /dev/null -w "%{size_download}\n" "$1"
+# Displays the size of the body response in bytes
+
+curl -s "$1" | wc -c

@@ -1,8 +1,4 @@
 #!/bin/bash
-response=$(curl -s -w "\n%{http_code}" "$1")
-status=$(echo "$response" | tail -n1)
-body=$(echo "$response" | sed '$d')
+# Displays body of response
 
-if [ "$status" -eq 200 ]; then
-    echo -n "$body"
-fi
+curl -s "$1"
