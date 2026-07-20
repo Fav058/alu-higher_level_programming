@@ -1,4 +1,3 @@
 #!/bin/bash
-# Displays body of response
-
-curl -s "$1"
+# Sends a GET request and displays the body of a 200 response
+curl -sL "$1"
