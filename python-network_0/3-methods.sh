@@ -1,4 +1,2 @@
 #!/bin/bash
-# Displays allowed HTTP methods
-
-curl -sI "$1" | grep "Allow:" | cut -d' ' -f2-
+curl -s -X OPTIONS -D - -o /dev/null "$1" | grep -i "^Allow:" | cut -d' ' -f2- | tr -d '\r'

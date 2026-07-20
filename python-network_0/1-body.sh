@@ -1,4 +1,8 @@
 #!/bin/bash
-# Displays body only for HTTP 200 responses
+response=$(curl -s -w "\n%{http_code}" "$1")
+status=$(echo "$response" | tail -n1)
+body=$(echo "$response" | sed '$d')
 
-curl -sL "$1"
+if [ "$status" -eq 200 ]; then
+    echo -n "$body"
+fi
