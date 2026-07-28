@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-"""State model for SQLAlchemy"""
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+"""Creates the states table in MySQL."""
 
-Base = declarative_base()
+import sys
+from sqlalchemy import create_engine
+from model_state import Base
 
+if __name__ == "__main__":
+    engine = create_engine(
+        "mysql+mysqldb://{}:{}@localhost/{}".format(
+            sys.argv[1],
+            sys.argv[2],
+            sys.argv[3]
+        ),
+        pool_pre_ping=True
+    )
 
-class State(Base):
-    """Represents a state, links to MySQL table states"""
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    name = Column(String(128), nullable=False)
+    Base.metadata.create_all(engine)
