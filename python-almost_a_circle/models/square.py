@@ -10,6 +10,16 @@ class Square(Rectangle):
         """Initialize a new Square"""
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """Get/set the size"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        self.width = value
+        self.height = value
+
     def __str__(self):
         """Returns the string representation of the Square"""
         return "[Square] ({}) {}/{} - {}".format(
